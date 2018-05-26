@@ -1,0 +1,9 @@
+{% if isAuth %}
+<div class="container">
+    <p class="par1">Вы на сайте как <b>{{ isAuth.0.login }}</b>. Вы можете оплатить товары, которые вы выбрали или Продолжить выбор товаров</p>
+    <div class="shopping_cart_buttons">
+        <a class="clear-cart" href="http://brand/cart/">BACK TO CART</a>
+        <a class="continue-cart">BUY GOODS</a>
+    </div>
+</div>
+{% endif %}

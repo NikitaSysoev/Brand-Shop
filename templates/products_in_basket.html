@@ -1,0 +1,18 @@
+{% for item in basket.products_in_basket %}
+<div class="cart-hide_item" id="item{{ item.id_good }}_cart" data-product-guid="{{ item.id_uuid }}">
+    <img class="cart-hide-img1" src="{{ domain }}/{{ item.foto }}"
+         alt="layer-{{ item.id_good }}.png">
+    <div class="cart-hide-text">
+        <h4>{{ item.name }}</h4>
+        <div class="stars">
+            {% include 'rating.html' %}
+        </div>
+        <p><span class="units">{{item.count}}</span>
+            <span> x </span>$<span class="delete-price">{{ item.price|abs }}</span>.00</p>
+    </div>
+    <div class="cart-hide-delete">
+        <i class="fa fa-times-circle" aria-hidden="true"
+           onclick="clear_basket_good('#item{{ item.id_good }}_cart')"></i>
+    </div>
+</div>
+{% endfor %}

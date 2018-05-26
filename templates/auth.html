@@ -1,0 +1,25 @@
+{% if isAuth == false %}
+<form class="authorization" method="post" action="/">
+    <label for="login">Login: </label><input type="text" id="login" name="login"><br>
+    <label for="pass">Password: </label><input type="password" id="pass" name="pass"> <br>
+    <div style="display: flex">
+        <label for="rememberme">Remember me: </label>
+        <input type="checkbox" name="rememberme" id="rememberme"/>
+    </div>
+    <br>
+    <input class="button-enter" type="button" name="Submgin" value="LOG IN" id="btn-1" onclick="register()"/>
+    <br>
+    <a href="/register/">Register</a>
+</form>
+{% endif %}
+
+<br>
+
+{% if isAuth %}
+<form class="authorization" action="/" method="post" style="width: 147px;">
+    <p>Welcome</p>
+    <b>{{ isAuth.0.login }}</b>
+    <br>
+    <p><input type="submit" value="LOG OUT" name="ExitLogin"/></p>
+</form>
+{% endif %}

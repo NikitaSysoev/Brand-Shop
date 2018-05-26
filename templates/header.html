@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{% include 'head.html' %}
+<body>
+<div class="box">
+    <div class="content">
+        <header class="header">
+            <div class="container">
+                <div class="head_flex">
+                    <div class="head_left">
+                        <a href="{{ domain }}" class="logo">
+                            <div class="brand">
+                                bran<span class="brand-d">d</span>
+                            </div>
+                        </a>
+                        <form class="header_middle">
+                            <div class="browse_menu_hidden">
+                                <div class="header_browse">
+                                    Browse
+                                    <i class="fa fa-caret-down fa-browse" aria-hidden="true"></i>
+                                </div>
+                                <div class="browse_menu" id="browse_menu">
+                                    <div class="transform"></div>
+                                    {% include 'browse-list.html' %}
+                                </div>
+                            </div>
+                            <input type="search" id="search" class="header_search" placeholder="Search for Item...">
+                            <div class="header_search_submit" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="head_right">
+                        <div id="basket">
+                            {% include 'basket.html' %}
+                        </div>
+                        <div id="autentification">
+                            <div class="my-Account"> My Account
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                            <div id="autorize">
+                                {% include 'auth.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>

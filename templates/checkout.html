@@ -1,0 +1,100 @@
+{% include 'bread_crumbs.html' %}
+    {% if isAuth == false %}
+<div class="container" id="checkout">
+    <div class="checkout">
+        <div class="checkout-item">
+            <h2>01.&nbsp;&nbsp;&nbsp;shipping adress</h2>
+            <div class="details_in">
+                <form class="details_left">
+                    <div>
+                        <div class="sa-row1">check as a guest or register</div>
+                        <div class="sa-row2">Register with us for future convenience</div>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="hd-1" class="hide" name="check">
+                        <label class="sup" for="hd-1">
+                            <div class="adv">
+                                <div class="bbb"></div>
+                            </div>
+                            <p>Checkout as guest</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="hd-2" class="hide" name="check" value checked>
+                        <label class="sup" for="hd-2">
+                            <div class="adv">
+                                <div class="bbb"></div>
+                            </div>
+                            <p>register</p>
+                        </label>
+                    </div>
+                    <div class="sa-block2">
+                        <div class="sa-row1">register and save time!</div>
+                        <div class="sa-row2 sa-row2__2">Register with us for future convenience</div>
+                    </div>
+                    <div>
+                        <a href="#" class="sa-row3">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Fastand easy checkout
+                        </a>
+                        <a href="#" class="sa-row3 sa-row3__2">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Easy access to your order history and status
+                        </a>
+                    </div>
+                    <a href="/register/" style="text-align: center; padding-top: 15px;" class="sa-button sa-continue">Continue</a>
+                </form>
+                <form class="details_right" method="post" action="/">
+                    <div>
+                        <div class="sa-row1">Already registed?</div>
+                        <div class="sa-row2">Please log in below</div>
+                    </div>
+                    <label class="sa-email" for="email">login
+                        <span></span>
+                    </label>
+                    <input id="email" type="text" name="myEmailField">
+                    <label class="sa-email" for="password">password
+                        <span></span>
+                    </label>
+                    <input id="password" type="password" name="Password">
+                    <div class="sa_attention1"></div>
+                    <div>
+                        <button class="sa-button sa-login" onclick="register2(); return false;">log in</button>
+                        <a class="remind_pass" href="#">forgot password?</a></div>
+                </form>
+            </div>
+        </div>
+        <div class="checkout-item">
+            <h2>02.&nbsp;&nbsp;&nbsp;billing information</h2>
+            <div class="details_in"></div>
+        </div>
+        <div class="checkout-item">
+            <h2>03.&nbsp;&nbsp;&nbsp;shipping information</h2>
+            <div class="details_in"></div>
+        </div>
+        <div class="checkout-item">
+            <h2>04.&nbsp;&nbsp;&nbsp;shipping method</h2>
+            <div class="details_in"></div>
+        </div>
+        <div class="checkout-item">
+            <h2>05.&nbsp;&nbsp;&nbsp;payment method</h2>
+            <div class="details_in"></div>
+        </div>
+        <div class="checkout-item">
+            <h2>06.&nbsp;&nbsp;&nbsp;order review</h2>
+            <div class="details_in"></div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if isAuth %}
+<div class="container">
+    <p class="par1">Вы на сайте как <b>{{ isAuth.0.login }}</b>. Вы можете оплатить товары, которые вы выбрали или Продолжить выбор товаров</p>
+    <div class="shopping_cart_buttons">
+        <a class="clear-cart" href="{{domain}}cart/">BACK TO CART</a>
+        <a class="continue-cart">BUY GOODS</a>
+    </div>
+</div>
+{% endif %}

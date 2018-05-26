@@ -1,0 +1,5 @@
+{% for item_page in content_data.list.page_name %}
+{% for item in content_data.list.category_name %}
+<li><a href="{{domain}}{{ item_page.url }}/{{ item.url }}/">{{ item.name }}</a></li>
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,27 @@
+{% if content_data.products|length > 0 %}
+{% for item in content_data.products %}
+<a class="fetured_item" id="item_{{ item.id_good }}" value="1" href="{{ domain }}good/{{ item.id_good }}"
+   data-product-guid="{{ item.ID_UUID }}" onclick="add_basket_one('#item_{{ item.id_good }}')">
+    <div class="item_back">
+        <img class="item_img" src="{{ domain }}{{ item.foto }}" alt="layer-{{ item.id_good }}.png" >
+    </div>
+    <div class="fetured_text">{{ item.name }}</div>
+    <div class="fetured_cont">
+        <div class="fetured_price">${{ item.price }}</div>
+        <div class="stars_fetured">
+            {% include 'rating.html' %}
+        </div>
+    </div>
+    <div class="blockhover" onclick="return false">
+        <div class="imgfix">
+            <i class="sprite sprite-forma-1"></i>
+            <p class="block">Add to Card</p>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endif %}
+
+{% if content_data.products|length == 0 %}
+<p class="no_goods">Товаров нет в магазине. Приносим извинения за неудобства</p>
+{% endif %}

@@ -1,0 +1,45 @@
+{% include 'bread_crumbs.html' %}
+<div class="container">
+    <div class="shopping_cart">
+        <div class="shopping_cart_head">
+            <div class="details details_head">product details</div>
+            <div class="unit_price price_head">unit price</div>
+            <div class="quantity quantity_head">quantity</div>
+            <div class="shipping shipping_head">shipping</div>
+            <div class="subtotal subtotal_head">subtotal</div>
+            <div class="action_head">action</div>
+        </div>
+        {% include 'products-in-cart.html' %}
+    </div>
+    <div class="shopping_cart_buttons">
+        <a class="clear-cart" onclick="clear_all()">CLEAR SHOPPING CART</a>
+        <a class="continue-cart" href="{{domain}}men/">CONTINUE SHOPPING</a>
+    </div>
+    <div class="proceed-to-checkout">
+        <form class="shipping-adress">
+            <h2>shipping adress</h2>
+            <div class="country_adress"><p>Bangladesh</p>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <div id="city_list" class="country_adress_hidden">
+                <!--
+                загружыено через ajax
+                -->
+            </div>
+            <input type="text" placeholder="State" value required>
+            <input type="text" placeholder="Postcode / Zip" value required>
+            <button class="get-a-quote">get a quote</button>
+        </form>
+        <form class="coupon-discount">
+            <h2>coupon discount</h2>
+            <p>Enter your coupon code if you have one</p>
+            <input type="text" placeholder="State" value required>
+            <button class="apply-coupon">Apply coupon</button>
+        </form>
+        <form class="check-block">
+            <div class="sub-total">Sub total <span> $900</span></div>
+            <div class="grand-total">GRAND TOTAL <span> $900</span></div>
+            <a href="{{domain}}checkout">proceed to checkout</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+{% include 'bread_crumbs.html' %}
+<div class="container">
+    <div class="man_content">
+        <nav class="products_left_menu">
+            <details>
+                <summary>Category</summary>
+                <ul>
+                    {% include 'category-list.html' %}
+                    <!--
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Bags</a></li>
+                    <li><a href="#">Denim</a></li>
+                    <li><a href="#">Hoodies & Sweatshirts</a></li>
+                    <li><a href="#">Jackets & Coats</a></li>
+                    <li><a href="#">Pants</a></li>
+                    <li><a href="#">Polos</a></li>
+                    <li><a href="#">Shirts</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Shorts</a></li>
+                    <li><a href="#">Sweaters & Knits</a></li>
+                    <li><a href="#">T-Shirts</a></li>
+                    <li><a href="#">Tanks</a></li> -->
+                </ul>
+            </details>
+            <details>
+                <summary>Brand</summary>
+            </details>
+            <details>
+                <summary>designer</summary>
+            </details>
+        </nav>
+        <div class="products">
+            <div class="product_options">
+                <fieldset class="option_left">
+                    <legend>trending now</legend>
+                    <ul class="option_left_nav">
+                        <li><a href="#">bohemian</a></li>
+                        <li><a class="option_a" href="#">floral</a></li>
+                        <li><a href="#">lace</a></li>
+                    </ul>
+                    <ul class="option_left_nav1">
+                        <li><a href="#">floral</a></li>
+                        <li><a class="option_a" href="#">lace</a></li>
+                        <li><a href="#">bohemian</a></li>
+                    </ul>
+                </fieldset>
+                <fieldset class="option_middle">
+                    <legend>size</legend>
+                    <form class="option_middle_nav">
+                        <input id="XXS" type="checkbox" name="check" value="XXS">
+                        <label for="XXS">XXS</label>
+                        <input id="XS" type="checkbox" name="check" value="XX">
+                        <label for="XS">XS</label>
+                        <input id="S" type="checkbox" name="check" value="S">
+                        <label for="S">S</label>
+                        <input id="M" type="checkbox" name="check" value="M">
+                        <label for="M">M </label>
+                    </form>
+                    <form class="option_middle_nav1">
+                        <input id="L" type="checkbox" name="check" value="L">
+                        <label class="nav1_a" for="L">L</label>
+                        <input id="XL" type="checkbox" name="check" value="XL">
+                        <label class="nav1_b" for="XL">XL</label>
+                        <input id="XXL" type="checkbox" name="check" value="XXL">
+                        <label class="XXL" for="XXL">XXL</label>
+                    </form>
+                </fieldset>
+                <div class="option_right">
+                    <p>price</p>
+                    <div class="slider-price"></div>
+                    <div class="range-price">
+                        <p>$<span id="left_count">52</span></p>
+                        <p>$<span id="right_count">400</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="product_toolbar">
+                <form class="sort_by">
+                    <button class="butt_a">Sort By</button>
+                    <button class="butt_b">name</button>
+                    <div class="clearfix"></div>
+                </form>
+                <form class="show_by">
+                    <button class="butt_a">Show</button>
+                    <button class="butt_b">09</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <div class="product_img">
+                <div class="fetured_parent" id="featured_parent">
+                    {% include 'products.html' %}
+                </div>
+            </div>
+            <div class="product_buttons">
+                <div class="paginator">
+                    <span class="paginator_pages">
+                        <a href="#">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                        <a class="ppage_fix ppage_active" href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a class="ppage_prelast" href="#">6</a>
+
+                        <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </span>
+                </div>
+                <a class="view_all" onclick="view_all2()">view all</a></div>
+        </div>
+    </div>
+</div>
+<footer class="footer_arrivals">
+    <div class="container dignity">
+        <div class="dignity_block">
+            <div class="img1"></div>
+            <a href="#">Free Delivery</a>
+            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive
+                models.</p>
+        </div>
+        <div class="dignity_block">
+            <div class="img2"></div>
+            <a class="dig_a" href="#">Sales & discounts</a>
+            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive
+                models.</p>
+        </div>
+        <div class="dignity_block">
+            <div class="img3"></div>
+            <a href="#">Quality assurance</a>
+            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive
+                models.</p>
+        </div>
+    </div>
+</footer>

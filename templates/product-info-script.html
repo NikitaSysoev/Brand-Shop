@@ -1,0 +1,121 @@
+<script>
+    $(document).ready(function () {
+        if($('#item_number').text()>0){
+            $('.items_number').css('display', 'block');
+        }
+
+        var rate = document.getElementById('rating');
+        rate.innerHTML = ratingStars(parseInt(rate.textContent));
+
+        // basket
+        var basket = new Basket();
+
+        $(document).on('click', '.cart', function () {
+            $('.cart-hide').slideToggle('slow');
+        });
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest("#basket").length) {
+                $('.cart-hide').slideUp('slow');
+            }
+            e.stopPropagation();
+        });
+
+
+        $(document).on('click', '.header_browse', function () {
+            $('.browse_menu').slideToggle('slow');
+        });
+
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest(".browse_menu_hidden").length) {
+                $('.browse_menu').slideUp('slow');
+            }
+            e.stopPropagation();
+        });
+
+        $('.load').on('click', '.fa', function () {
+            var eventId = $(this).parents('.cart-hide_item')[0].id;
+            basket.delete(eventId);
+        });
+
+
+        $('#featured_parent').on('click', '.fetured_item', function (e) {
+            this.idProduct = $(this).attr('id').split('_')[1];
+            this.src = $(this).find('.item_img').attr('src');
+            this.alt = $(this).find('.item_img').attr('alt');
+            this.quantity = $(this).attr('value');
+            this.price = $(this).find('.fetured_price').text().replace('$', '');
+            this.name = $(this).find('.fetured_text').text();
+            this.rating = $(this).find('.stars_fetured').html();
+            basket.add(this.idProduct, this.src, this.alt, this.quantity, this.price, this.name, this.rating);
+        });
+
+        // forms
+        var regExpMail = /^\w+\.?-?\w+@\w+\.\w+$/g;
+        $('.email-subscribe-submit').on('click', function () {
+            var emailInput = $('#email_subscribe');
+            checkForm(emailInput, regExpMail);
+            return false;
+        });
+
+
+        // citaty
+        $('.click_bar').on('click', '.click', function () {
+            $(this).siblings().removeClass('act');
+            $(this).addClass('act');
+        });
+
+
+        // page add-to-cart
+
+        $('.women_collection').on('click', '.cart-button', function () {
+            var idProduct = $(this).parents('.collection_content').attr('id').split('_')[1];
+            var src = $('#good_image img').attr('src');
+            var alt = $(this).parents('.collection_content').attr('id').split('_')[0];
+            var quantity = parseInt($(this).parents('.choose_to_cart').find('.option3').val());
+            var price = parseInt($(this).parents('.collection_content').find('.price').text().replace('$', ''));
+            var name = $(this).parents('.collection_content').find('h4').text();
+            var rating = $(this).parents('.collection_content').find('.rating').html();
+            basket.add(idProduct, src, alt, quantity, price, name, rating);
+            return false;
+        });
+
+        $('.form-1').on('click', '.option', function () {
+            $(this).find('.option_hidden').slideToggle('slow');
+            $(this).find('.fa').toggleClass('angle-switch180');
+        });
+
+        $('#choose-color').on('click', '.option', function () {
+            $(this).parents('.option').css('width', '146px');
+            var valColor = $(this).find('p').text();
+            var bgColor = $(this).find('.color_option').css('background-color');
+            $(this).parents('.option_hidden').siblings('.option_click').find('.color_option').css('background-color', '' + bgColor);
+            $(this).parents('.option_hidden').siblings('.option_click').find('p').text(valColor);
+        });
+
+        $('.form-2').on('click', '.option', function () {
+            $(this).find('.option_hidden').slideToggle('slow');
+            $(this).find('.fa').toggleClass('angle-switch180');
+        });
+
+        $('#choose-size').on('click', '.option', function () {
+            $(this).parents('.option').css('width', '146px');
+            var valSize = $(this).text();
+            console.log(valSize);
+            $(this).parents('.option_hidden').siblings('.option_click').find('p').text(valSize);
+        });
+
+        // authorization
+        $(document).on('click', '.my-Account', function () {
+            $('.authorization').slideToggle('slow').css("display", "flex");
+            $(this).find('.fa').toggleClass('rotate180deg');
+        });
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest("#autentification").length) {
+                $('.authorization').slideUp('slow');
+                $('.my-Account').find('.fa').removeClass('rotate180deg');
+            }
+            e.stopPropagation();
+        });
+
+    });
+</script>

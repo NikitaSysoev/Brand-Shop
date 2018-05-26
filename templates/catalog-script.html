@@ -1,0 +1,115 @@
+<script>
+    $(document).ready(function () {
+
+        $('.view_all').on('click', function () {
+            $(this).hide();
+            $('.paginator').hide();
+        });
+
+        if($('#item_number').text()>0){
+            $('.items_number').css('display', 'block');
+        }
+
+        // slider
+        $(".slider-price").slider({
+            animate: true, // Анимация. true - включить. false - выключить.
+            min: 1, // Минимальный интервал диапазона.
+            max: 500, // Максимальный интервал диапазона.
+            range: true, // Включение двойного ползунка. Если место true поставить 'min', то будет один ползунок.
+            step: 1, // Шаг ползунка.
+            values: [52, 400], // Значения для ползунков. Для первого и второго.
+            slide: function (event, ui) { // Действия которые будут происходить по перетаскивания ползунка.
+                $("#left_count").html(ui.values[0]); // Значение первого ползунка.
+                $("#right_count").html(ui.values[1]); // Значение второго ползунка.
+            }
+
+        });
+        $("span.ui-state-default.ui-corner-all").css('width', '14px');
+        $("span.ui-state-default.ui-corner-all").css('height', '14px');
+        $("span.ui-state-default.ui-corner-all").css('border-radius', '50%');
+        $("span.ui-state-default.ui-corner-all").css('background', '#f16d7f');
+        $("span.ui-state-default.ui-corner-all").css('border', '1px solid #f16d7f');
+        $("span.ui-state-default.ui-corner-all").css('cursor', 'pointer');
+        $(".ui-widget-content.ui-widget").css('border', '1px solid #f0f0f0');
+        $(".ui-widget-header.ui-corner-all").css('background', '#f16d7f');
+        $(".ui-widget-content.ui-corner-all").css('background', '#f0f0f0');
+        $(".ui-widget-content.ui-corner-all").css('height', '6px');
+
+
+        // product-products
+        var featItems = document.getElementsByClassName('fetured_item');
+
+        // basket
+        var basket = new Basket();
+       // basket.render('#basket');
+
+        $(document).on('click', '.cart', function () {
+            $('.cart-hide').slideToggle('slow');
+        });
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest("#basket").length) {
+                $('.cart-hide').slideUp('slow');
+            }
+            e.stopPropagation();
+        });
+
+
+        $(document).on('click', '.header_browse', function () {
+            $('.browse_menu').slideToggle('slow');
+        });
+
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest(".browse_menu_hidden").length) {
+                $('.browse_menu').slideUp('slow');
+            }
+            e.stopPropagation();
+        });
+
+        $('.load').on('click', '.fa', function () {
+            var eventId = $(this).parents('.cart-hide_item')[0].id;
+            basket.delete(eventId);
+        });
+
+
+        $('#featured_parent').on('click', '.fetured_item', function (e) {
+            this.idProduct = $(this).attr('id').split('_')[1];
+            this.src = $(this).find('.item_img').attr('src');
+            this.alt = $(this).find('.item_img').attr('alt');
+            this.quantity = $(this).attr('value');
+            this.price = $(this).find('.fetured_price').text().replace('$', '');
+            this.name = $(this).find('.fetured_text').text();
+            this.rating = $(this).find('.stars_fetured').html();
+            basket.add(this.idProduct, this.src, this.alt, this.quantity, this.price, this.name, this.rating);
+        });
+
+
+        // forms
+        var regExpMail = /^\w+\.?-?\w+@\w+\.\w+$/g;
+        $('.email-subscribe-submit').on('click', function () {
+            var emailInput = $('#email_subscribe');
+            checkForm(emailInput, regExpMail);
+            return false;
+        });
+
+        // citaty
+        $('.click_bar').on('click', '.click', function () {
+            $(this).siblings().removeClass('act');
+            $(this).addClass('act');
+        });
+
+
+
+        // authorization
+        $(document).on('click', '.my-Account', function () {
+            $('.authorization').slideToggle('slow').css("display", "flex");
+            $(this).find('.fa').toggleClass('rotate180deg');
+        });
+        $(document).mouseup(function (e) {
+            if (!$(e.target).closest("#autentification").length) {
+                $('.authorization').slideUp('slow');
+                $('.my-Account').find('.fa').removeClass('rotate180deg');
+            }
+            e.stopPropagation();
+        });
+    });
+</script>

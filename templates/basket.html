@@ -1,0 +1,34 @@
+<div class="cart">
+    <div class="items_number">
+        <span id="item_number">
+            {% if basket.basket_count_good <=0 %}
+            0
+            {% endif %}
+            {% if basket.basket_count_good > 0 %}
+            {% for item in basket.basket_count_good %}
+            {{item.n + 0}}
+            {% endfor %}
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="cart-hide">
+    <div class="load">
+        {% include 'products_in_basket.html' %}
+    </div>
+    <div class="transform"></div>
+    <div class="cart_price">
+        <p>TOTAL</p>
+        <p>$<span id="total_price">
+            {% if basket.basket_price|length == 0 %}
+            0
+            {% endif %}
+            {% if basket.basket_price|length > 0 %}
+            {% for item in basket.basket_price %}
+            {{item.f|abs}}
+            {% endfor %}
+            {% endif %}
+        </span>.00</p></div>
+    <a class="cart_checkout" href="/checkout/">Checkout</a>
+    <a class="cart_to_cart" href="/cart/">Go to cart</a>
+</div>

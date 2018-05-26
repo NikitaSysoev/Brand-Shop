@@ -1,0 +1,26 @@
+{% for item in basket.products_in_basket %}
+<div class="shopping_cart_item" id="item{{ item.id_good }}_shopping" data-product-guid="{{ item.id_uuid }}">
+    <div class="details">
+        <div class="item_picture item_picture__img1" style="background-image: url('/{{ item.foto }}');"></div>
+        <div class="item_text">
+            <div class="item_text_h">{{ item.name }}</div>
+            <div class="stars">
+                {% include 'rating.html' %}
+            </div>
+            <div class="item_text_p">Color: <span>Red</span></div>
+            <div class="item_text_p">Size: <span> Xll</span></div>
+        </div>
+    </div>
+    <div class="unit_price">{{ item.price | abs}}</div>
+    <div class="quantity">
+        <input class="text_cart_item1" type="text" value="{{ item.count }}" maxlength="5">
+    </div>
+    <div class="shipping">free</div>
+    <div class="subtotal">${{ item.price }}</div>
+    <div class="action" >
+        <i class="fa fa-times-circle" aria-hidden="true" onclick="clear_basket_cart('#item{{ item.id_good }}_shopping')"></i>
+    </div>
+</div>
+{% endfor %}
+
+
